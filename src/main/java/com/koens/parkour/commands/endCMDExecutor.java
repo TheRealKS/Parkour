@@ -1,12 +1,18 @@
 package com.koens.parkour.commands;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import com.koens.parkour.Parkour;
+import com.koens.parkour.util.runSubCMD;
+import org.bukkit.entity.Player;
 
-public class endCMDExecutor implements CommandExecutor {
+public class endCMDExecutor implements runSubCMD {
 
-    public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
-        return true;
+    private final Parkour par;
+
+    public endCMDExecutor(Parkour parkour) {
+        this.par = parkour;
+    }
+
+    public void run(Player p) {
+
     }
 }

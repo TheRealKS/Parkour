@@ -36,7 +36,8 @@ public class parkourCMDExecutor implements CommandExecutor {
                 executor.run(p);
             }
             else if (args[0].equalsIgnoreCase("end")) {
-
+                endCMDExecutor executor = new endCMDExecutor(par);
+                executor.run(p);
             }
         }
         return true;
