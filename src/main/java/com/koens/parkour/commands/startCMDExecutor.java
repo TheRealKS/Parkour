@@ -6,6 +6,7 @@ import com.koens.parkour.util.runSubCMD;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.metadata.LazyMetadataValue;
 
 public class startCMDExecutor implements runSubCMD {
 
@@ -23,17 +24,12 @@ public class startCMDExecutor implements runSubCMD {
         player = pl;
         player.sendMessage(ChatColor.YELLOW + "Parkour started!");
         player.setMetadata("parkourtime", new FixedMetadataValue(par, time));
-        par.getServer().getScheduler().scheduleSyncRepeatingTask(par, new Runnable() {
+        int id = par.getServer().getScheduler().scheduleSyncRepeatingTask(par, new Runnable() {
             public void run() {
-                if (time < 4) {
-                    time++;
-                    player.setMetadata("parkourtime", new FixedMetadataValue(par, time + 1));
-                }
-                else {
-                    player.sendMessage(converter.secondsToHHMMSS(player.getMetadata("parkourtime").get(0).asInt()));
-                    par.getServer().getScheduler().cancelAllTasks();
-                }
+                time++;
+                player.setMetadata("parkourtime", new FixedMetadataValue(par, time + 1));
             }
         }, 20L, 20L);
+        player.setMetadata("timerID", new FixedMetadataValue(par, id));
     }
 }
