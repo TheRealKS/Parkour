@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 
 public class parkourCMDExecutor implements CommandExecutor {
     private final Parkour par;
-    
+
     public parkourCMDExecutor(Parkour parkour) {
         this.par = parkour;
     }
@@ -24,6 +24,9 @@ public class parkourCMDExecutor implements CommandExecutor {
                     startCMDExecutor executor = new startCMDExecutor(par);
                     executor.run(getNearestPlayer(sender.getBlock().getLocation()));
                 }
+                else if (args[0].equalsIgnoreCase("end")) {
+
+                }
             }
         }
         else {
@@ -31,6 +34,9 @@ public class parkourCMDExecutor implements CommandExecutor {
             if (args[0].equalsIgnoreCase("start")) {
                 startCMDExecutor executor = new startCMDExecutor(par);
                 executor.run(p);
+            }
+            else if (args[0].equalsIgnoreCase("end")) {
+
             }
         }
         return true;
