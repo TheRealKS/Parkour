@@ -1,0 +1,7 @@
+name: Parkour
+main: com.koens.parkour.Parkour
+version: 1.0
+author: TheRealKS123
+commands:
+  parkour:
+    description: Parkour command
