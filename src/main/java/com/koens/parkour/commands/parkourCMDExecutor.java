@@ -22,10 +22,17 @@ public class parkourCMDExecutor implements CommandExecutor {
                 BlockCommandSender sender = (BlockCommandSender) commandSender;
                 if (args[0].equalsIgnoreCase("start")) {
                     startCMDExecutor executor = new startCMDExecutor(par);
-                    executor.run(getNearestPlayer(sender.getBlock().getLocation()));
+                    if (getNearestPlayer(sender.getBlock().getLocation()) != null)
+                        executor.run(getNearestPlayer(sender.getBlock().getLocation()));
+                    else
+                        sender.sendMessage("Couldn't find player!");
                 }
                 else if (args[0].equalsIgnoreCase("end")) {
-
+                    endCMDExecutor executor = new endCMDExecutor(par);
+                    if (getNearestPlayer(sender.getBlock().getLocation()) != null)
+                        executor.run(getNearestPlayer(sender.getBlock().getLocation()));
+                    else
+                        sender.sendMessage("Couldn't find player!");
                 }
             }
         }
