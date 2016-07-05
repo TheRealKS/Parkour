@@ -34,6 +34,9 @@ public class parkourCMDExecutor implements CommandExecutor {
                     else
                         sender.sendMessage("Couldn't find player!");
                 }
+                else if (args[0].equalsIgnoreCase("reset")) {
+
+                }
             }
         }
         else {
@@ -44,6 +47,10 @@ public class parkourCMDExecutor implements CommandExecutor {
             }
             else if (args[0].equalsIgnoreCase("end")) {
                 endCMDExecutor executor = new endCMDExecutor(par);
+                executor.run(p);
+            }
+            else if (args[0].equalsIgnoreCase("reset")) {
+                resetCMDExecutor executor = new resetCMDExecutor(par);
                 executor.run(p);
             }
         }
