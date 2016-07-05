@@ -7,13 +7,16 @@ import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
 public class parkourCMDExecutor implements CommandExecutor {
     private final Parkour par;
+    private final YamlConfiguration p_file;
 
-    public parkourCMDExecutor(Parkour parkour) {
+    public parkourCMDExecutor(Parkour parkour, YamlConfiguration yml) {
         this.par = parkour;
+        this.p_file = yml;
     }
 
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
@@ -35,7 +38,11 @@ public class parkourCMDExecutor implements CommandExecutor {
                         sender.sendMessage("Couldn't find player!");
                 }
                 else if (args[0].equalsIgnoreCase("reset")) {
-
+                    resetCMDExecutor executor = new resetCMDExecutor(par);
+                    if (getNearestPlayer(sender.getBlock().getLocation()) != null)
+                        executor.run(getNearestPlayer(sender.getBlock().getLocation()));
+                    else
+                        sender.sendMessage("Couldn't find player!");
                 }
             }
         }
@@ -51,6 +58,10 @@ public class parkourCMDExecutor implements CommandExecutor {
             }
             else if (args[0].equalsIgnoreCase("reset")) {
                 resetCMDExecutor executor = new resetCMDExecutor(par);
+                executor.run(p);
+            }
+            else if (args[0].equalsIgnoreCase("select")) {
+                selectCMDExecutor executor = new selectCMDExecutor(par, args, p_file);
                 executor.run(p);
             }
         }

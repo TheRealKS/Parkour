@@ -6,6 +6,6 @@ import org.bukkit.entity.Player;
 public class checkpointCMDExecutor implements runSubCMD {
 
     public void run(Player player) {
-
+        //Coming soon!
     }
 }
