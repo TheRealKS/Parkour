@@ -72,9 +72,23 @@ public class parkourCMDExecutor implements CommandExecutor {
                 addCMDExecutor executor = new addCMDExecutor(par, args, p_file);
                 executor.run(p);
             }
+            else if (args[0].equalsIgnoreCase("delete")) {
+                deleteCMDExecutor executor = new deleteCMDExecutor(par);
+                executor.run(p);
+            }
             else if (args[0].equalsIgnoreCase("edit")) {
-                editCMDExecutor executor = new editCMDExecutor();
-                executor.selector(args, p);
+                if (p.hasMetadata("selectedParkour")) {
+                    editCMDExecutor executor = new editCMDExecutor();
+                    executor.selector(args, p);
+                } else
+                    p.sendMessage("You have not selected a parkour yet! Do /parkour select to select a parkour");
+            }
+            else if (args[0].equalsIgnoreCase("confirm")) {
+                confirmCMDExecutor executor = new confirmCMDExecutor(par);
+                if (p.hasMetadata("confirmtype"))
+                    executor.confirm(p, p.getMetadata("confirmtype").get(0).asInt(), p_file);
+                else
+                    executor.confirm(p, 0, p_file);
             }
         }
         return true;

@@ -20,9 +20,9 @@ public class selectCMDExecutor implements runSubCMD {
 
     public void run(Player player) {
         if (player.hasPermission("parkour.edit.select")) {
-            int id = getParkourID(args[1]);
-            if (id >= 0) {
-                player.setMetadata("selectedParkour", new FixedMetadataValue(par, id));
+            if (p_list.isSet(args[1])) {
+                int id = p_list.getInt(args[1] + ".id");
+                player.setMetadata("selectedParkour", new FixedMetadataValue(par, args[1]));
                 player.sendMessage("Selected parkour '" + args[1] + "', with id " + id + "!");
             }
             else
@@ -30,13 +30,6 @@ public class selectCMDExecutor implements runSubCMD {
         }
         else
             player.sendMessage("You don't have permission to do that!");
-    }
-
-    private int getParkourID(String parkour) {
-        if (p_list.isSet(parkour + ".id") && p_list.isInt(parkour + ".id"))
-            return p_list.getInt(parkour + ".id");
-        else
-            return -1;
     }
 }
 
