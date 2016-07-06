@@ -25,8 +25,11 @@
         <module name="Parkour" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Parkour" target="1.5" />
+    <bytecodeTargetLevel target="1.7">
+      <module name="Parkour" target="1.7" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-source 7 " />
   </component>
 </project>
