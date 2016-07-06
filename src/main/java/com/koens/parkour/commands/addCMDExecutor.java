@@ -29,6 +29,8 @@ public class addCMDExecutor implements runSubCMD {
             p_list.set("idcounter", idcount);
             try {
                 saveConfig();
+                makeFile(player);
+                player.sendMessage("Your parkour has been created! Now do /parkour select [name of your parkour] to start editing it!");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -40,5 +42,17 @@ public class addCMDExecutor implements runSubCMD {
     private void saveConfig() throws IOException {
         File file = new File(par.getDataFolder(), "parkour_list.yml");
         p_list.save(file);
+    }
+    private void makeFile(Player p) throws IOException {
+        File path = new File(par.getDataFolder(), "parkours");
+        File file = new File(path, "parkour_" + args[1].toLowerCase());
+        YamlConfiguration parkouryml = YamlConfiguration.loadConfiguration(file);
+        if (!file.exists()) {
+            parkouryml.save(file);
+        }
+        else {
+            p.sendMessage("Error while creating a file for your parkour!");
+            p.sendMessage("Exception: File already exists!");
+        }
     }
 }
