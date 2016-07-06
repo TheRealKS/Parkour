@@ -1,6 +1,6 @@
 package com.koens.parkour.commands;
 
-import com.koens.parkour.editor.*;
+import com.koens.parkour.editor.setstartAction;
 import org.bukkit.entity.Player;
 
 public class editCMDExecutor {
@@ -24,9 +24,20 @@ public class editCMDExecutor {
                 if (checkPermission("setend", player)) {
                     //coming!!
                 }
-            //further actions
-            default:
-                player.sendMessage("That action doesn't exist! Do /parkour edit help to see all commands!");
+            case "setcheckpoint":
+                if (checkPermission("setcheckpoint", player)) {
+
+                }
+            case "editcheckpoint":
+                if (checkPermission("editcheckpoint", player)) {
+                }
+            case "removecheckpoint":
+                if (checkPermission("removecheckpoint", player)) {
+                }
+            case "rename":
+                if (checkPermission("rename", player)) {
+                }
+            //default here
         }
     }
 
