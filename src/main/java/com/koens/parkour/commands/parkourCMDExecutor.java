@@ -64,6 +64,14 @@ public class parkourCMDExecutor implements CommandExecutor {
                 selectCMDExecutor executor = new selectCMDExecutor(par, args, p_file);
                 executor.run(p);
             }
+            else if (args[0].equalsIgnoreCase("selected")) {
+                selectedCMDExecutor executor = new selectedCMDExecutor();
+                executor.run(p);
+            }
+            else if (args[0].equalsIgnoreCase("add")) {
+                addCMDExecutor executor = new addCMDExecutor(par, args, p_file);
+                executor.run(p);
+            }
         }
         return true;
     }

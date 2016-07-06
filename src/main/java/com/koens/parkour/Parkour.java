@@ -11,7 +11,7 @@ public class Parkour extends JavaPlugin {
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
-        File file = new File(getDataFolder(), "parkours_list.yml");
+        File file = new File(getDataFolder(), "parkour_list.yml");
         YamlConfiguration p_list = YamlConfiguration.loadConfiguration(file);
         if (!file.exists()) {
             try {

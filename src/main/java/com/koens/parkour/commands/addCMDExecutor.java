@@ -45,7 +45,7 @@ public class addCMDExecutor implements runSubCMD {
     }
     private void makeFile(Player p) throws IOException {
         File path = new File(par.getDataFolder(), "parkours");
-        File file = new File(path, "parkour_" + args[1].toLowerCase());
+        File file = new File(path, "parkour_" + args[1].toLowerCase() + ".yml");
         YamlConfiguration parkouryml = YamlConfiguration.loadConfiguration(file);
         if (!file.exists()) {
             parkouryml.save(file);
