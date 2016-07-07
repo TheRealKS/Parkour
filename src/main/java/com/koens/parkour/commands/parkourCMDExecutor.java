@@ -78,7 +78,7 @@ public class parkourCMDExecutor implements CommandExecutor {
             }
             else if (args[0].equalsIgnoreCase("edit")) {
                 if (p.hasMetadata("selectedParkour")) {
-                    editCMDExecutor executor = new editCMDExecutor();
+                    editCMDExecutor executor = new editCMDExecutor(par, p_file);
                     executor.selector(args, p);
                 } else
                     p.sendMessage("You have not selected a parkour yet! Do /parkour select to select a parkour");
