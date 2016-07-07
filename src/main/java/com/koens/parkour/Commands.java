@@ -13,6 +13,7 @@ public enum Commands {
 
     private enum editorCommands {
         SETSTART,
-        SETEND;
+        SETEND,
+        RENAME;
     }
 }
